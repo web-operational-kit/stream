@@ -1,0 +1,14 @@
+{
+    "name": "wok/stream",
+    "description": "WOK Stream handler component",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastien ALEXANDRE",
+            "email": "sebastien@graphidev.fr"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
