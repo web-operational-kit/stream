@@ -5,10 +5,15 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Sebastien ALEXANDRE",
+            "name": "Sébastien ALEXANDRE",
             "email": "sebastien@graphidev.fr"
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "WOK\\Stream\\": "src"
+        }
+    }
 }
