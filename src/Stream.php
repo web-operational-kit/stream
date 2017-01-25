@@ -28,7 +28,6 @@
         protected $readable = false;
         protected $writable = false;
 
-
         /**
          * Instanciate Stream object
          * @param   resource        $resource         Stream
@@ -46,6 +45,39 @@
             $this->readable = in_array($mode, ['r', 'r+', 'w+', 'a+', 'x+', 'c+']);
             $this->writable = in_array($mode, ['r+', 'w', 'w+', 'a', 'a+', 'x', 'x+', 'c', 'c+']);
 
+
+        }
+
+
+        /**
+         * Instanciate a Stream object with a string
+         * @param     string         $string         The value to define while instanciating stream object
+         * @param     string         $wrapper        Resource path descriptor
+         *
+         * @see http://php.net/manual/fr/wrappers.php.php
+         * @see http://php.net/manual/fr/function.fopen.php
+        **/
+        static public function createwithString($string = '', $wrapper = 'php://temp') {
+
+            $self = self::createFromPath($wrapper, 'w+');
+            $self->write($string);
+
+            return $self;
+
+        }
+
+
+        /**
+         * Instanciate a Stream object from a path
+         * @param     string         $path         Resource or wrapper path
+         * @param     string         $mode         Resource access mode
+         *
+         * @see http://php.net/manual/fr/wrappers.php.php
+         * @see http://php.net/manual/fr/function.fopen.php
+        **/
+        static public function createFromPath($path = 'php://temp', $mode = 'c+') {
+
+            return new self(fopen($path, $mode));
 
         }
 

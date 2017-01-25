@@ -28,6 +28,7 @@
 
         }
 
+
         /**
          * Test retrieving stream resource
          * ---
@@ -37,6 +38,7 @@
             $this->assertEquals($this->resource, $this->stream->getResource(), 'Stream::getStream is supposed to return the resource');
 
         }
+
 
         /**
          * Test stream values retrieving
@@ -71,6 +73,33 @@
             // Is at the end
             $this->stream->seek(0, SEEK_END);
             $this->assertTrue($this->stream->eof(), 'Stream::eof is supposed to return true at the end of stream');
+
+        }
+
+
+        /**
+         * Test instanciate stream from a resource path
+         * ---
+        **/
+        public function testCreateFromPath() {
+
+            $stream = Stream::createFromPath($wrapper = 'php://memory', 'w+');
+            $this->assertInstanceOf(Stream::class, $stream, 'Stream::createFromString() must return a stream object');
+
+        }
+
+
+        /**
+         * Test instanciate stream with a string
+         * ---
+        **/
+        public function testCreateWithString() {
+
+            $stream = Stream::createWithString($stringValue = 'stringValue', $wrapper = 'php://memory');
+
+            $this->assertInstanceOf(Stream::class, $stream, 'Stream::createFromString() must return a stream object');
+            $this->assertEquals($stringValue, $stream->getContent(), 'Stream::createFromString() must define an initial value');
+
 
         }
 
