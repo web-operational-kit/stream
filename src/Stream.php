@@ -57,7 +57,7 @@
          * @see http://php.net/manual/fr/wrappers.php.php
          * @see http://php.net/manual/fr/function.fopen.php
         **/
-        static public function createwithString($string = '', $wrapper = 'php://temp') {
+        static public function createWithString($string = '', $wrapper = 'php://temp') {
 
             $self = self::createFromPath($wrapper, 'w+');
             $self->write($string);
